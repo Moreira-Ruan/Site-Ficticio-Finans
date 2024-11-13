@@ -19,8 +19,18 @@
 </head>
 
 <body>
-
-    <header style="background: #FFBF0D;">
+    <!-- !
+    Pontos a melhorar:
+    - A tag header esta comportando tanto a navbar quanto a home, o que nao e uma boa pratica. O ideal e que o header comporte somente a navegacao e a logo. Ja a home deve ser alocada em uma section. 
+    - A tag nav esta alocada corretamente no header, porem, nao coloquei a img dentro da tag <a> (link) que e necessaria para que consiga aplicar class do bootstrap em imagens. E uma boa pratica aplicar a imagem dentro de um link. 
+    - Utilizacao de estilizacao inline nao sao recomendadas principalmente em projetos de grande porte, pois, dificulta a manutencao. Recomenda-se utilizar o css externo. 
+    - O botao 'Entrar' foi implementado sem utilizar class do bootstrap visando responsividade. 
+    - Tags de input foram adicionadas dentro de uma div, o que nao e recomendado. Recomenda-se implementar inputs dentro de uma tag form, assim e possivel ter mais controle e responsividade utilizando class do bootstrap. 
+    - Os icons Android e IOS foram implementados dentro do button. Recomenda-se implementar os icons dentro de uma tag <a>, pois, assim esse icons se tornam links que podem encaminhar para outras paginas e tambem contribui para deixar a pagina mais leve. 
+    - Nao foi implementado class para responsividade na imagem de capa, onde a imagem deveria ser ocultada em dispositivos menores.
+    -->
+    <!-- *Header
+     <header style="background: #FFBF0D;">
         <div class="container d-flex align-items-center justify-content-between">
             <img style="width: 200px; height: auto;" class="mt-2" src="./assets/images/logo.png" alt="">
             <nav class="navbar navbar-expand-sm mt-2">
@@ -67,7 +77,20 @@
             </div>
         </div>
     </header>
-    <main>
+    -->
+
+
+    <!-- !
+    - Utilizei varias section com a classe container diretamente. Recomenda-se criar cada section envolta por uma div que contenha a class container, isso melhora a consistencia e organizacao. 
+    - Utilizar class personalizada 'caixa' para section, adicionando estilo com css externo. 
+    - Utilizei somente col-md e margens manuais para espacamento, porem, para melhor responsividade recomenda-se usar d-flex juntamente com align-items-center para melhor responsividade. 
+    - Defini largura e altura das imagens manualmente pelo style, porem, recomenda-se o uso de img-fluid para garantir responsividade e se ajustem ao container.
+    - Utilizei muitos espacamentos manuais, recomenda-se aproveitar de class d-flex e align-item-center para criar espacamentos automaticos. 
+    - Utilizei <hr> e <br> para controlar espacamentos, mas isso nao e recomendado. Class utilitarias como mt e mb sao mais recomendadas. 
+    - Novamente botao implementado utilizando a tag button ao inves de implementar usando a tag <a> e estilizar com bootstrap. 
+    -->
+    <!-- *Main
+      <main>
         <section class="container d-flex">
             <div class="row">
                 <div class="col-md-6" style="margin-top: 150px;">
@@ -124,7 +147,15 @@
         </section>
         <hr>
     </main>
-    <footer class="container d-flex mb-2">
+    -->
+
+
+    <!-- !
+    - Utilizei um ul dentro da tag nav, o que nao e errado, porem, uma escolha mais simples seria utilizar tag <p> contendo os link <a>.
+    - Faltou implementar os icons de redes socias no footer. 
+    -->
+    <!-- *Footer
+     <footer class="container d-flex mb-2">
         <nav class="navbar navbar-expand-sm">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -142,15 +173,189 @@
             </ul>
         </nav>
     </footer>
+    -->
+
+    <header> <!-- Inicio cabecalho -->
+        <nav class="navbar navbar-expand-sm navbar-light bg-warning">
+            <div class="container">
+                <a href="" class="navbar-brand">
+                    <img src="./assets/images/logo.png" alt="" width="142">
+                </a>
+
+                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-principal">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="nav-principal">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Recursos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Beneficios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Preco</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="btn btn-outline-light ms-4">Entrar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header> <!-- Fim cabecalho -->
+
+    <section id="home"> <!-- Inicio home -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex"> <!-- Inicio textos da secao -->
+                    <div class="align-self-center">
+                        <h1 class="display-4">Suas contas, descomplicadas</h1>
+                        <p>
+                            Usado por mais de 1 milhão de pessoas, o Finans é uma ferramenta online que vai facilitar
+                            sua vida financeira.
+                        </p>
+
+                        <form action="" class="my-4">
+                            <div class="input-group input-group-lg">
+                                <!-- 
+                                - aria-label="" serve para nomear ou rotular o campo de forma que leitores de tela entendam o propósito do input.
+                                - aria-describedby="" Esse atributo relaciona o input a outro elemento que contém uma descrição adicional. O valor deve ser o id de um elemento que fornece informações extras sobre o campo.
+                                -->
+                                <input type="email" placeholder="Seu e-mail" class="form-control"
+                                    aria-label="Seu e-mail" aria-describedby="cadastrese">
+                                <button type="button" class="btn btn-primary" id="cadastrese">Cadastre-se</button>
+                            </div>
+                        </form>
+
+                        <p>Disponivel para
+                            <a href="" class="btn btn-outline-light">
+                                <!-- 
+                                - aria-hidden="true" Usado para esconder elementos de leitores de tela e outras tecnologias assistivas, sem removê-los visualmente da página. Isso significa que o elemento ainda estará visível para usuários que enxergam, mas será ignorado por leitores de tela.
+                                -->
+                                <i class="fab fa-android" aria-hidden="true"></i>
+                            </a>
+                            <a href="" class=" btn btn-outline-light">
+                                <i class="fab fa-apple" aria-hidden="true"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div> <!-- Fim textos da secao -->
+
+                <div class="col-md-6 d-none d-md-block">
+                    <img src="./assets/images/capa-mulher.png" alt="">
+                </div>
+
+            </div>
+        </div>
+    </section> <!-- Fim home -->
+
+    <section class="caixa"> <!-- Inicio secao saiba mais -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d-flex">
+                    <div class="align-self-center">
+                        <h2>Saiba para onde vai o seu dinheiro</h2>
+                        <p>
+                            Com o Finans, você categoriza todos os seus lançamentos. Com gráficos simples, você sabe de
+                            onde vem e para onde vai o seu dinheiro.
+                        </p>
+                        <a href="" class="btn btn-primary">Veja mais</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="./assets/images/saiba.png" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section> <!-- Fim secao saiba mais -->
+
+    <section class="caixa"> <!-- Inicio secao  juros -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="./assets/images/juros.png" alt="" class="img-fluid">
+                </div>
+                <div class="col-md-6 d-flex">
+                    <div class="align-self-center">
+                        <h2>Pare de pagar juros e economize</h2>
+                        <p>
+                            Manter as contas em dia é sempre um problema? O Finans avisa você: receba alertas de contas
+                            a pagar e a receber!
+                        </p>
+                        <a href="" class="btn btn-primary">Veja mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- Fim secao juros -->
+
+    <section class="caixa"> <!-- Inicio secao recursos -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="./assets/images/facil.png" alt="" class="img-fluid">
+                    <h4>Fácil de usar</h4>
+                    <p>
+                        O Finans vai além do básico e permite que você faça controles incríveis, essenciais para suas
+                        finanças. Simples como tem que ser!
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <img src="./assets/images/economize.png" alt="" class="img-fluid">
+                    <h4>Economize seu tempo</h4>
+                    <p>
+                        Tempo é dinheiro! Em segundos, você tem tudo sob controle e aproveite seu tempo com o que
+                        realmente importa pra você!
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <img src="./assets/images/suporte.png" alt="" class="img-fluid">
+                    <h4>Suporte amigo</h4>
+                    <p>
+                        Dúvidas? Perguntas? Nosso suporte super legal ajuda você! A gente tá aqui pra resolver seus
+                        problemas e deixar sua vida bem mais fácil!
+                    </p>
+                </div>
+            </div>
+    </section> <!-- Fim secao recursos -->
+
+    <footer class="my-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <p>
+                        <a href="">Home</a>
+                        <a href="">Recursos</a>
+                        <a href="">Benefícios</a>
+                        <a href="">Preços</a>
+                    </p>
+                </div>
+                <div class="col-md-4 d-flex justify-content-end">
+                    <a href="" class="btn btn-outline-dark">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="" class="btn btn-outline-dark ms-2">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="" class="btn btn-outline-dark ms-2">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="" class="btn btn-outline-dark ms-2">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
-        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
-        integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
